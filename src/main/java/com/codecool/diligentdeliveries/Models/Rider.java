@@ -1,4 +1,7 @@
-package com.codecool.diligentdeliveries;
+package com.codecool.diligentdeliveries.Models;
+
+import com.codecool.diligentdeliveries.Models.Parcel;
+import com.codecool.diligentdeliveries.Models.Report;
 
 import java.util.ArrayList;
 
@@ -20,7 +23,7 @@ public class Rider {
         //Implement
     }
 
-    private boolean reattempt(Parcel parcel)
+    //private boolean reattempt(Parcel parcel)
     {
         //Implement
     }
@@ -30,7 +33,7 @@ public class Rider {
         //Implement
     }
 
-    public Report getReport()
+    //public Report getReport()
     {
         //Implement
     }
