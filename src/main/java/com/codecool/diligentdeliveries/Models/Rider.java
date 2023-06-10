@@ -4,14 +4,16 @@ import com.codecool.diligentdeliveries.Models.Parcel;
 import com.codecool.diligentdeliveries.Models.Report;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Rider {
 
-    private int id;
+    private String id;
     private String name;
 
-    public Rider(int id, int reattemptPerAddress, int maximumReattempts){
-        //Initialize members
+    public Rider( int reattemptPerAddress, int maximumReattempts){
+        this.id = UUID.randomUUID().toString();
+
     }
 
     public void addParcels(ArrayList<Parcel> parcels){
