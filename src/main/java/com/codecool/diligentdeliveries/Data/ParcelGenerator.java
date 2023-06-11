@@ -1,7 +1,5 @@
 package com.codecool.diligentdeliveries.Data;
 
-import com.codecool.diligentdeliveries.Models.Rider;
-
 import java.util.*;
 
 public class ParcelGenerator {

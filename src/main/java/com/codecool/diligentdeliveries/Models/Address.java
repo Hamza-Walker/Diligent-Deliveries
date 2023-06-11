@@ -2,13 +2,13 @@ package com.codecool.diligentdeliveries.Models;
 
 public class Address {
     private final String zipCode;
-    private final String StreetAddress;
-    private final String customerNAme;
+    private final String streetAddress;
+    private final String customerName;
 
     public Address(String zipCode, String streetAddress, String customerNAme) {
         this.zipCode = zipCode;
-        StreetAddress = streetAddress;
-        this.customerNAme = customerNAme;
+        this.streetAddress = streetAddress;
+        this.customerName = customerNAme;
     }
 
     public String getZipCode() {
@@ -16,18 +16,16 @@ public class Address {
     }
 
     public String getStreetAddress() {
-        return StreetAddress;
+        return streetAddress;
     }
 
-    public String getCustomerNAme() {
-        return customerNAme;
+    public String getCustomerName() {
+        return customerName;
     }
 
     @Override
     public String toString() {
-        return
-                "zipCode='" + zipCode + '\'' +
-                ", StreetAddress='" + StreetAddress + '\'' +
-                ", customerNAme='" + customerNAme + '\'';
+        return customerName + ", " + streetAddress + ", " + zipCode;
+
     }
 }

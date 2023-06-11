@@ -12,19 +12,11 @@ public class Parcel {
         this.address = address;
     }
 
-    public boolean delivered() {
+    public boolean deliver() {
         Random random = new Random();
-
         return random.nextDouble() > 0.5;
     }
 
-    @Override
-    public String toString() {
-        return "Parcel{" +
-                "id='" + id + '\'' +
-                ", address=" + address +
-                '}';
-    }
 
     public String getId() {
         return id;
@@ -32,5 +24,11 @@ public class Parcel {
 
     public Address getAddress() {
         return address;
+    }
+    @Override
+    public String toString() {
+        return "Parcel ID: " + id + "\n" +
+                "Delivery Information: " + address + "\n" +
+                "Delivery Successful: " + deliver() + "\n";
     }
 }
