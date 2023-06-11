@@ -1,9 +1,14 @@
 package com.codecool.diligentdeliveries;
 
 
+import com.codecool.diligentdeliveries.Data.RiderNameGenerator;
 import com.codecool.diligentdeliveries.Models.Address;
 import com.codecool.diligentdeliveries.Models.Parcel;
+import com.codecool.diligentdeliveries.Models.Rider;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
 
 public class Application {
@@ -22,26 +27,54 @@ public class Application {
         // Test the Address class
 
         // Test the Parcel class
-        testParcel();
+        testParcels();
+        //testRiderNames();
+    }
+    private static void testRiderNames() {
+        RiderNameGenerator rider = new RiderNameGenerator();
+        List<String> names = rider.getRiderNames();
+        System.out.println(names);
     }
 
 
+    private static void testParcels() {
+        List<Rider> riders = createRiders(3); // Create 3 riders
 
-    private static void testParcel() {
-        String streetAddress = getRandomStreetAddress();
+        List<Parcel> parcels = new ArrayList<>();
+        for (int i = 0; i < 30; i++) {
+            String streetAddress = getRandomStreetAddress();
+            Address address = new Address("5678", streetAddress, "Jane Smith");
+            Parcel parcel = new Parcel(address);
+            parcels.add(parcel);
+        }
 
-        // Create an instance of Address
-        Address address = new Address("5678", streetAddress, "Jane Smith");
+        // Assign the parcels to the riders
+        int riderIndex = 0;
+        for (Parcel parcel : parcels) {
+            Rider rider = riders.get(riderIndex);
+            rider.addParcels(Collections.singletonList(parcel));
 
-        // Create an instance of Parcel
-        Parcel parcel = new Parcel(address);
+            // Move to the next rider
+            riderIndex = (riderIndex + 1) % riders.size();
+        }
 
-        // Test the getId() method of Parcel
-        System.out.println("Parcel ID: " + parcel.getId());
+        // Start the routine for each rider
+        for (Rider rider : riders) {
+            rider.startRoutine();
+        }
+    }
 
-        // Test the delivered() method of Parcel
-        boolean deliveryResult = parcel.delivered();
-        System.out.println("Delivery Information: " + address);
-        System.out.println("Delivery successful: " + deliveryResult);
+    private static List<Rider> createRiders(int count) {
+        List<Rider> riders = new ArrayList<>();
+
+        for (int i = 0; i < count; i++) {
+            String riderName = "Rider " + (i + 1);
+            int reattemptPerAddress = 1; // Set the desired reattempt per address value
+            int maximumReattempts = 5; // Set the maximum reattempts value
+            Rider rider = new Rider(riderName, reattemptPerAddress, maximumReattempts);
+            riders.add(rider);
+        }
+
+        return riders;
     }
 }
